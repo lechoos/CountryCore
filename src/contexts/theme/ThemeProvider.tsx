@@ -7,17 +7,19 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
 	const [isDark, setIsDark] = useState(() => {
 		const setting = getItem<boolean>('darkMode');
-
 		if (setting !== null) {
 			return setting;
 		}
-
 		return window.matchMedia('(prefers-color-scheme: dark)').matches;
 	});
 
 	useEffect(() => {
 		setItem('darkMode', isDark);
-		document.documentElement.classList.toggle('dark', isDark);
+		if (isDark) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
 	}, [isDark, setItem]);
 
 	return <ThemeContext.Provider value={{ isDark, setIsDark }}>{children}</ThemeContext.Provider>;
