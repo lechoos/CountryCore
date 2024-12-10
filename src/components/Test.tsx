@@ -10,7 +10,7 @@ export const Test = () => {
 
 	return (
 		<button
-			className='bg-accent-500 hover:bg-accent-800 transition duration-300 px-2 py-1 rounded-lg'
+			className='px-2 py-1 transition duration-300 rounded-lg bg-accent-500 hover:bg-accent-800'
 			onClick={() => setIsDark(prev => !prev)}>
 			<img src={imagePath} alt='Icon' />
 		</button>

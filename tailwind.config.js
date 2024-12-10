@@ -19,6 +19,12 @@ export default {
 			'9xl': ['12.8rem', { lineHeight: '1' }],
 		},
 		extend: {
+			screens: {
+				sm: '576px',
+			},
+			fontFamily: {
+				display: 'Raleway, sans-serif',
+			},
 			colors: {
 				primary: {
 					50: '#fafafa',

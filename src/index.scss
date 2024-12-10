@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	h1 {
+		@apply text-4xl font-bold;
+	}
+
+	h2 {
+		@apply text-2xl font-medium;
+	}
+
+	body {
+		@apply font-display transition-colors duration-300;
+	}
+
+	.dark body {
+		@apply bg-primary-800;
+	}
+}
+
 html {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
