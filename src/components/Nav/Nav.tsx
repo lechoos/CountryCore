@@ -1,8 +1,19 @@
-import { Home, Globe, Search } from 'lucide-react';
-import { NavItem } from './NavItem';
+import { useState } from 'react';
+import { useButtonStyles } from '../../hooks/useButtonStyles';
 import { NavItems } from '../../types/navItems';
+import { Home, Globe, Search, CircleChevronRight } from 'lucide-react';
+import { NavItem } from './NavItem';
+import { ThemeButton } from '../ThemeButton/ThemeButton';
 
 export const Nav = () => {
+	const [active, setActive] = useState(false);
+
+	const { baseStyles, iconStyles } = useButtonStyles();
+
+	const navActiveHandler = () => {
+		setActive(prev => !prev);
+	};
+
 	const items: NavItems = [
 		{
 			path: '/',
@@ -11,31 +22,32 @@ export const Nav = () => {
 		{
 			path: '/world',
 			Icon: Globe,
+			offset: '3/4',
 		},
 		{
 			path: '/search',
 			Icon: Search,
+			offset: 150,
 		},
 	];
 
 	return (
-		<nav className='flex justify-center'>
-			<div className='relative flex justify-center gap-2 px-4 py-2 overflow-hidden border border-t-0 w-fit rounded-b-2xl'>
+		<nav className='relative'>
+			<ThemeButton />
+			<button onClick={navActiveHandler} className={`${baseStyles} fixed top-1 left-1 group z-10`}>
+				<CircleChevronRight
+					className={`${iconStyles} ${active && 'rotate-180'}
+					transition-all group-hover:text-primary-800`}
+				/>
+			</button>
+			<div
+				className={`fixed top-7 flex flex-col items-start gap-2 px-1 py-1 w-fit rounded-r-xl overflow-hidden transition-transform duration-300 -translate-x-full z-[5] ${
+					active && 'translate-x-0'
+				}`}>
 				{items.map(item => (
-					<NavItem key={item.path} path={item.path} Icon={item.Icon} />
+					<NavItem key={item.path} path={item.path} Icon={item.Icon} active={active} offset={item?.offset} />
 				))}
 			</div>
 		</nav>
 	);
 };
-
-// import { NavItem } from './NavItem';
-
-// export const Nav = () => {
-// 	return (
-// 		<nav className='flex justify-center'>
-// 			<div className='relative flex justify-center px-2 py-1 overflow-hidden border w-fit rounded-b-2xl'>
-// 			</div>
-// 		</nav>
-// 	);
-// };

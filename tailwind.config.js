@@ -110,6 +110,9 @@ export default {
 				'3xl': '2.4rem',
 				full: '100%',
 			},
+			translate: {
+				'150': '150%',
+			}
 		},
 	},
 	plugins: [],

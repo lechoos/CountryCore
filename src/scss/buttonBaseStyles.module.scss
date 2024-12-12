@@ -1,0 +1,15 @@
+.button {
+	@apply p-[1.5rem] w-fit aspect-square rounded-full bg-accent-700 hover:bg-accent-400 hover:rounded-xl transition-all duration-500;
+}
+
+:global(.dark) .button {
+	@apply bg-accent-500 hover:bg-accent-700;
+}
+
+.icon {
+	@apply text-primary-200 transition-colors scale-110;
+}
+
+:global(.dark) .icon {
+	@apply text-primary-800;
+}

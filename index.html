@@ -8,12 +8,17 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet" />
 		<script>
-			if (
-				localStorage.getItem('darkMode') === 'true' ||
-				(!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-			) {
+			const darkMode = localStorage.getItem('darkMode');
+
+			if (darkMode === 'true' || (darkMode === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
 			}
+
+			window.addEventListener('load', () => {
+				document.body.classList.add('theme-transitions-ready');
+			});
 		</script>
 	</head>
 	<body>
