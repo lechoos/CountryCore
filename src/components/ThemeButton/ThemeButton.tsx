@@ -19,8 +19,11 @@ export const ThemeButton = ({ className }: ButtonProps) => {
 	const darkHandler = () => setIsDark(prev => !prev);
 
 	return (
-		<button className={`${baseStyles} ${className} fixed right-1 scale-75 group`} onClick={darkHandler}>
-			<Icon className={`${iconStyles} group-hover:text-primary-800`} Component={!isDark ? SunMedium : Moon} />
+		<button className={`${baseStyles} ${className} fixed top-0 right-1 scale-75 group`} onClick={darkHandler}>
+			<Icon
+				className={`${iconStyles} group-hover:text-primary-800 dark:group-hover:text-primary-200`}
+				Component={!isDark ? SunMedium : Moon}
+			/>
 		</button>
 	);
 };
