@@ -27,3 +27,7 @@ html {
 .theme-transitions-ready {
 	@apply transition-colors duration-300;
 }
+
+.wrapper {
+	@apply mx-auto w-full max-w-[1440px]
+}
