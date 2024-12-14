@@ -37,7 +37,7 @@ export const Nav = () => {
 			<button onClick={navActiveHandler} className={`${baseStyles} fixed top-1 left-1 group z-10`}>
 				<CircleChevronRight
 					className={`${iconStyles} ${active && 'rotate-180'}
-					transition-all group-hover:text-primary-800`}
+					transition-all group-hover:text-primary-800 dark:group-hover:text-primary-200`}
 				/>
 			</button>
 			<div
