@@ -3,13 +3,9 @@
 }
 
 :global(.dark) .button {
-	@apply bg-accent-500 hover:bg-accent-700;
+	@apply bg-secondary-500 hover:bg-secondary-700;
 }
 
 .icon {
-	@apply text-primary-200 transition-colors scale-110;
-}
-
-:global(.dark) .icon {
-	@apply text-primary-800;
+	@apply text-primary-200 transition-colors duration-500 scale-110;
 }
