@@ -1,0 +1,7 @@
+.text {
+	@apply text-secondary-200 text-sm;
+}
+
+:global(.dark) .text {
+  @apply text-accent-200;
+}
