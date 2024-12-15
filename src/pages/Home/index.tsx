@@ -2,15 +2,9 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
 import { CountryCard } from '../../components/CountryCard/CountryCard';
+import { CountryValues } from '../../types/country';
 
-type Country = {
-	area: number;
-	capital: string[];
-	population: number;
-	name: {
-		[key: string]: string;
-	};
-};
+type Country = Pick<CountryValues, 'area' | 'capital' | 'name' | 'population'>;
 
 const fetchCountries = () =>
 	fetch('https://restcountries.com/v3.1/independent?status=true&fields=area,capital,name,population')
