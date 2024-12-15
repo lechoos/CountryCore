@@ -48,9 +48,9 @@ export default function Home() {
 	}
 
 	return (
-		<section className='flex flex-col items-center'>
+		<section className='flex flex-col items-center mt-3 sm:mt-0'>
 			<Searchbar value={search} setValue={setSearch} />
-			<div className='flex gap-4 flex-wrap justify-center my-10 px-2'>
+			<div className='flex gap-4 flex-wrap justify-center my-10 px-2 w-full'>
 				{(!allCountries || allCountries.length === 0) && <div className={loadingStyles}>No countries fetched</div>}
 
 				{visibleCountries.map((country: Country | null) => {
