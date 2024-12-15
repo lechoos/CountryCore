@@ -1,0 +1,29 @@
+.container {
+	@apply flex flex-col items-center gap-4 mt-10 mb-4 px-3;
+}
+
+.flags {
+	@apply grid grid-cols-1 md:grid-cols-2 justify-items-center items-center max-w-xl md:max-w-4xl gap-2 md:gap-4;
+}
+
+.image {
+	@apply w-full h-auto;
+}
+
+.info-title {
+	@apply font-bold text-primary-800;
+}
+
+.info-item {
+	@apply text-xl text-primary-800 font-medium;
+}
+
+:global(.dark) {
+	.info-title {
+		@apply text-accent-200;
+	}
+
+	.info-item {
+		@apply text-accent-100;
+	}
+}
