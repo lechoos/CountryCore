@@ -1,13 +1,15 @@
-import { Nav } from '../components/Nav/Nav';
 import { Outlet } from 'react-router';
+import { ThemeButton } from '../components/ThemeButton/ThemeButton';
+import { HomeButton } from '../components/HomeButton/HomeButton';
 
 const Layout = () => {
 	return (
 		<>
-			<Nav />
-			<section className='wrapper'>
+			<ThemeButton />
+			<HomeButton />
+			<main className='wrapper'>
 				<Outlet />
-			</section>
+			</main>
 		</>
 	);
 };
