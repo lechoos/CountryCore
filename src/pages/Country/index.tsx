@@ -12,7 +12,7 @@ const Country = () => {
 		queryKey: ['country'],
 		queryFn: () =>
 			fetch(
-				`https://restcountries.com/v3.1/name/${name}?fullText=true&&fields=name,cca2,capital,flags,coatOfArms,continents,timezones,area,population,languages,maps,currencies`
+				`https://restcountries.com/v3.1/name/${name}?fullText=true&&fields=name,cca3,capital,flags,coatOfArms,continents,latlng,timezones,area,population,languages,maps,currencies`
 			).then(res => res.json()),
 	});
 
@@ -22,7 +22,7 @@ const Country = () => {
 		return (
 			<>
 				{data.map((country: CountryValues) => (
-					<Content key={country.cca2} country={country} />
+					<Content key={country.cca3} country={country} />
 				))}
 			</>
 		);
@@ -30,19 +30,3 @@ const Country = () => {
 };
 
 export default Country;
-
-//* name.common     name.nativeName.common (cca2.toLowerCase())
-//* name.official   name.nativeName.official (cca2.toLowerCase())
-//* capital
-//* flags (png or svg) && flags?.alt
-//* coatOfArms (same as above)
-
-//* continents
-//* timezones
-//* area
-//* population
-//* languages
-
-//? maps maybe??
-
-//* currencies[0]
