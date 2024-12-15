@@ -44,7 +44,7 @@ const TextComponent = ({ keyName, value }: TextProps) => {
 
 export const CountryCard = ({ name, capital, area, population }: CardProps) => {
 	return (
-		<div className='flex flex-col justify-between p-[2.4rem] bg-secondary-900 dark:bg-accent-900 transition-colors duration-500'>
+		<div className='flex flex-col justify-between p-[2.4rem] min-w-20 w-full max-w-[300px] bg-secondary-900 dark:bg-accent-900 transition-colors duration-500'>
 			<h2 className='mb-2 text-secondary-400 dark:text-accent-400 font-bold'>{name}</h2>
 			<div className='flex flex-col gap-1'>
 				<TextComponent keyName='Capital' value={capital} />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
+import { Searchbar } from '../../components/Searchbar/Searchbar';
 import { CountryCard } from '../../components/CountryCard/CountryCard';
 import { CountryValues } from '../../types/country';
 
@@ -14,17 +15,17 @@ const fetchCountries = () =>
 const loadingStyles = 'mt-2 text-center text-3xl text-primary-100 font-bold';
 
 export default function Home() {
-	const LIMIT_PER_PAGE = 30;
-	const { ref, inView } = useInView();
-	const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
-
 	const { data: allCountries, isLoading } = useQuery({
 		queryKey: ['countries'],
 		queryFn: fetchCountries,
 	});
 
-	const visibleCountries = allCountries?.slice(0, visibleCount) || [];
+	const LIMIT_PER_PAGE = 30;
+	const { ref, inView } = useInView();
 
+	const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
+	const [visibleCountries, setVisibleCountries] = useState(allCountries?.slice(0, visibleCount) || []);
+	const [search, setSearch] = useState('');
 	useEffect(() => {
 		if (inView && allCountries && visibleCount < allCountries.length) {
 			setVisibleCount(prev => Math.min(prev + LIMIT_PER_PAGE, allCountries.length));
@@ -32,13 +33,24 @@ export default function Home() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [inView, visibleCount, allCountries?.length]);
 
+	useEffect(() => {
+		if (search) {
+			return setVisibleCountries(
+				allCountries.filter((country: Country) => country.name.common.toLowerCase().includes(search.toLowerCase()))
+			);
+		}
+
+		setVisibleCountries(allCountries?.slice(0, visibleCount) || []);
+	}, [search, allCountries, visibleCount]);
+
 	if (isLoading) {
 		return <div className={loadingStyles}>Loading...</div>;
 	}
 
 	return (
-		<>
-			<div className='grid grid-rows-[auto] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10 px-2'>
+		<section className='flex flex-col items-center'>
+			<Searchbar value={search} setValue={setSearch} />
+			<div className='flex gap-4 flex-wrap justify-center my-10 px-2'>
 				{(!allCountries || allCountries.length === 0) && <div className={loadingStyles}>No countries fetched</div>}
 
 				{visibleCountries.map((country: Country | null) => {
@@ -60,6 +72,6 @@ export default function Home() {
 					Loading...
 				</div>
 			)}
-		</>
+		</section>
 	);
 }
