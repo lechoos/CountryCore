@@ -1,7 +1,7 @@
 export type CountryValues = {
 	area: number;
 	capital: string[];
-  cca2: string;
+	cca3: string;
 	coatOfArms: {
 		[key: string]: string;
 	};
@@ -20,6 +20,7 @@ export type CountryValues = {
 	languages: {
 		[language: string]: string;
 	};
+	latlng: number[];
 	name: {
 		common: string;
 		official: string;
