@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Home from '../pages/Home';
 import { ThemeProvider } from '../contexts/theme/ThemeProvider';
 import Layout from '../utils/Layout';
+import Country from '../pages/Country';
 
 const queryClient = new QueryClient();
 
@@ -12,7 +13,8 @@ const Router = () => (
 			<ThemeProvider>
 				<Routes>
 					<Route element={<Layout />}>
-						<Route index element={<Home />}/>
+						<Route index element={<Home />} />
+						<Route path='/country/:name' element={<Country />} />
 					</Route>
 				</Routes>
 			</ThemeProvider>
