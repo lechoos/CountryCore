@@ -115,6 +115,5 @@ export default {
 			},
 		},
 	},
-	safelist: ['-translate-x-3/4', '-translate-x-150', '!translate-x-0'],
 	plugins: [],
 };
